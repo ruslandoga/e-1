@@ -1,0 +1,3 @@
+- [ ] can create / join group with associated url
+- [ ] can set schedule for a group on url
+- [ ] can sub for email notifications over email

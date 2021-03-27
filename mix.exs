@@ -5,7 +5,7 @@ defmodule E.MixProject do
     [
       app: :e,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -60,7 +60,8 @@ defmodule E.MixProject do
       # {:ex_aws_s3, "~> 2.0"},
       {:ex_aws_ses, "~> 2.1"},
       {:hackney, "~> 1.9"},
-      {:sweet_xml, "~> 0.6"}
+      {:sweet_xml, "~> 0.6"},
+      {:ex_machina, "~> 2.7", only: :test}
     ]
   end
 
