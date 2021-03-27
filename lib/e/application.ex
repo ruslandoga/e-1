@@ -7,16 +7,11 @@ defmodule E.Application do
 
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
       E.Repo,
-      # Start the Telemetry supervisor
       EWeb.Telemetry,
-      # Start the PubSub system
       {Phoenix.PubSub, name: E.PubSub},
-      # Start the Endpoint (http/https)
-      EWeb.Endpoint
-      # Start a worker by calling: E.Worker.start_link(arg)
-      # {E.Worker, arg}
+      EWeb.Endpoint,
+      {Oban, oban_config()}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -30,5 +25,9 @@ defmodule E.Application do
   def config_change(changed, _new, removed) do
     EWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp oban_config do
+    Application.fetch_env!(:e, Oban)
   end
 end
