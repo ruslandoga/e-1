@@ -9,6 +9,7 @@ defmodule E.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      releases: releases(),
       aliases: aliases(),
       deps: deps()
     ]
@@ -46,7 +47,20 @@ defmodule E.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:oban, "~> 2.5"},
+      {:bamboo, "~> 2.0"},
+      {:bamboo_ses, "~> 0.2.0"},
+      {:httpoison, "~> 1.8"},
+      {:rexbug, github: "ruslandoga/rexbug"},
+      {:sentry, "~> 8.0"},
+      {:bigflake, "0.5.0"},
+      {:remote_ip, "~> 1.0.0"},
+      {:ex_aws, "~> 2.1"},
+      # {:ex_aws_s3, "~> 2.0"},
+      {:ex_aws_ses, "~> 2.1"},
+      {:hackney, "~> 1.9"},
+      {:sweet_xml, "~> 0.6"}
     ]
   end
 
@@ -63,5 +77,9 @@ defmodule E.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
+  end
+
+  defp releases do
+    [e: [include_executables_for: [:unix]]]
   end
 end
